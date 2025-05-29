@@ -1,2 +1,4 @@
 homepage: "https://www.merkle.com/es.html"
 documentation: "https://github.com/merkle-es/gtm-template-jquery-loader"
+  - sha: 2318e744b407579f2e7985efb41866f42aecaa2c
+    changeNotes: first commit
