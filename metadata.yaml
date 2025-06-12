@@ -2,10 +2,14 @@ homepage: "https://www.merkle.com/es.html"
 documentation: "https://github.com/merkle-es/gtm-template-jquery-loader"
 versions:
   # Latest version
+  - sha: 1860d75431e29d20515d1b986cd261158a6f1d62
+    changeNotes: |2
+      fix API callbacks
+      add test
+  # Older versions
   - sha: 99fb3400ca4998ce62759f7a55ea112cff8f4dbf
     changeNotes: |2
       update icon for tag template
       fix metadata.yaml
-  # Older versions
   - sha: 2318e744b407579f2e7985efb41866f42aecaa2c
     changeNotes: first commit
