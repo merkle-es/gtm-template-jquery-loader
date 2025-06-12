@@ -359,9 +359,9 @@ let endpoint = 'https://code.jquery.com/jquery-[[[JQUERY_VERSION]]].min.js';
 const selectedJQueryVersion = data.version;
 endpoint = endpoint.replace('[[[JQUERY_VERSION]]]', selectedJQueryVersion);
 
-log('Loading jQuery version ' + selectedJQueryVersion + 'from CDN: ' + endpoint);
+log('Loading jQuery version ' + selectedJQueryVersion + ' from CDN: ' + endpoint);
 
-injectScript(endpoint, data.gtmOnSuccess(), data.gtmOnFailure(), endpoint); // cache enabled
+injectScript(endpoint, data.gtmOnSuccess, data.gtmOnFailure, endpoint); // cache enabled
 
 
 ___WEB_PERMISSIONS___
@@ -416,7 +416,23 @@ ___WEB_PERMISSIONS___
 
 ___TESTS___
 
-scenarios: []
+scenarios:
+- name: Builds CDN URL correctly
+  code: |-
+    const mockData = {
+      version: 'XXX'
+    };
+
+    mock('injectScript', (url, onSuccess, onFailure) => {
+      assertThat(url).isEqualTo('https://code.jquery.com/jquery-XXX.min.js');
+      onSuccess();
+    });
+
+    // Call runCode to run the template's code.
+    runCode(mockData);
+
+    // Verify that the tag finished successfully.
+    assertApi('gtmOnSuccess').wasCalled();
 
 
 ___NOTES___
